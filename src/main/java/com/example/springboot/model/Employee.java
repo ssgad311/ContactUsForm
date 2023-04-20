@@ -16,7 +16,7 @@ import javax.validation.constraints.Pattern;
 public class Employee {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String custId;
+    private int custId;
  
     private String name;
     
@@ -48,11 +48,11 @@ public class Employee {
         return name;
     }
 
-    public String getCustId() {
+    public int getCustId() {
 		return custId;
 	}
 
-	public void setCustId(String custId) {
+	public void setCustId(int custId) {
 		this.custId = custId;
 	}
 

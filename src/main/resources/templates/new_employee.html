@@ -12,6 +12,8 @@
         <h1>Customer Management System</h1>
         <hr>
         <h2>Save Details</h2>
+        
+        <h3 th:text="${message}"> </h3>
 
         <form action="#" th:action="@{/saveEmployee}" th:object="${employee}" method="POST">
          
@@ -34,7 +36,7 @@
 
         <hr>
 
-        <a th:href="@{/}"> Back to Customer List</a>
+        <a th:href="@{/listAllEmployees}"> Back to Employees List</a>
     </div>
 </body>
 

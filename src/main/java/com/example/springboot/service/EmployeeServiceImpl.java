@@ -32,7 +32,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
 	@Override
-	public Employee getEmployeeBycustId(String custId) {
+	public Employee getEmployeeBycustId(int custId) {
 		Optional<Employee> optional = employeeRepository.findById(custId);
 		Employee employee = null;
 		if(optional.isPresent()) {
@@ -45,7 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
 	@Override
-	public void deleteEmployeeBycustId(String custId) {
+	public void deleteEmployeeBycustId(int custId) {
 		this.employeeRepository.deleteById(custId);
 		
 	}
