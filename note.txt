@@ -1,0 +1,3 @@
+Main page 
+name, mail and message and phoneumber - click on submit - save details in database - 
+redirect to contact us page - show all the employees - provide otpion to edit update delete employee
