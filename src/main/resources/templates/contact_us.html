@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0-beta1/css/bootstrap.min.css">
+    <style>
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-floating {
+            position: relative;
+        }
+
+        .form-floating input,
+        .form-floating textarea {
+            padding: 12px;
+            border: none;
+            border-bottom: 1px solid #ced4da;
+            background-color: transparent;
+            border-radius: 0;
+            height: 50px;
+        }
+
+        .form-floating input:focus,
+        .form-floating textarea:focus {
+            border-color: #007bff;
+            box-shadow: none;
+        }
+
+        .form-floating label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            padding: 12px;
+            font-size: 16px;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .form-floating input:focus~label,
+        .form-floating textarea:focus~label,
+        .form-floating input:not(:placeholder-shown)~label,
+        .form-floating textarea:not(:placeholder-shown)~label {
+            top: -20px;
+            left: 0;
+            opacity: 1;
+            font-size: 14px;
+            color: #007bff;
+        }
+
+        .form-floating textarea {
+            resize: none;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+    </style>
+
+
+<body>
+
+<body>
+    <h1>Contact Us</h1>
+    <form th:action="@{/contactUs}" th:object="${contactUsForm}" method="post">
+        <!-- Form fields go here -->
+        <label for="name">Name:</label>
+        <input type="text" th:field="*{name}" id="name" required>
+        <!-- Other form fields go here -->
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+<nav class="navbar navbar-expand-sm bg-light">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<body>
+    <div class="container mt-5 form-container">
+        <h1>Contact Us</h1>
+        <form action="#" th:action="@{/contact}" th:object="${contactForm}" method="post">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" id="name" th:field="*{name}" class="form-control" placeholder="Name" required>
+                        <label for="name">Name</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="email" id="email" th:field="*{email}" class="form-control" placeholder="Email" required>
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <textarea id="message" th:field="*{message}" class="form-control" placeholder="Message" required></textarea>
+                <label for="message">Message</label>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+    
+            // Get form values
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
+    
+            // Perform form validation
+            if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
+                alert('Please fill in all fields.');
+                return;
+            }
+    
+            // Send form data to server (replace this with your own implementation)
+            // Example using fetch API
+            fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    message: message
+                })
+            })
+            .then(function (response) {
+                if (response.ok) {
+                    alert('Form submitted successfully!');
+                    // Reset form after successful submission
+                    document.getElementById('contact-form').reset();
+                } else {
+                    alert('Failed to submit form. Please try again.');
+                }
+            })
+            .catch(function (error) {
+                console.error(error);
+                alert('Failed to submit form. Please try again.');
+            });
+        });
+    </script>
+    
+</body>
+</html>
